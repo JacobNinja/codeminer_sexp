@@ -3,10 +3,8 @@ require File.expand_path('../test_helper', __FILE__)
 class ParamsTest < Test::Unit::TestCase
 
   def sexp_result(code)
-    parser = CodeMiner::Parser.new(code)
-    params = parser.parse.each.first.params
-    parser.extend(CodeMiner::SexpProcessor)
-    CodeMiner::Formatters::Params.new(params, parser).to_sexp
+    ast = CodeMiner.sexp(code, {params: CodeMiner::Formatters::Params})
+    ast.each.first.params
   end
 
   def test_positional
@@ -24,7 +22,7 @@ end
   end
 
   def test_keyword
-    assert_equal [:args, 'a', [:kwarg, 'b', 'nil']], sexp_result(<<-RUBY)
+    assert_equal [:args, 'a', [:kwarg, 'b', [:local_variable, 'nil']]], sexp_result(<<-RUBY)
 def foo(a, b: nil)
 end
     RUBY
