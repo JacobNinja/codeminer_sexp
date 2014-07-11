@@ -4,7 +4,7 @@ module CodeMiner
     class Bodystmt < SexpFormatter
 
       def format(*nodes, children)
-        if children.empty?
+        if children.to_a.empty?
           CodeMiner::Sexp.new([:nil], exp)
         else
           super
