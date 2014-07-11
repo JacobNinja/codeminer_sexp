@@ -1,6 +1,4 @@
-require 'test/unit'
-require 'codeminer'
-require File.expand_path('../../lib/codeminer_sexp', __FILE__)
+require File.expand_path('../test_helper', __FILE__)
 
 class ParamsTest < Test::Unit::TestCase
 

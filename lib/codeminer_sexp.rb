@@ -1,3 +1,4 @@
+require File.expand_path('../codeminer_sexp/formatters/bodystmt', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/keyword_param', __FILE__)
@@ -17,6 +18,7 @@ module CodeMiner
         string: String,
         root: Root,
         params: Params,
+        bodystmt: Bodystmt,
     }
 
   end
