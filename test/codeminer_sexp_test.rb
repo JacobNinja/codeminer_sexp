@@ -21,4 +21,11 @@ a = 5
     CODE
   end
 
+  def test_void
+    assert_equal [:nil], sexp_result(<<-RUBY, CodeMiner::Formatters::Void)
+def foo
+end
+    RUBY
+  end
+
 end

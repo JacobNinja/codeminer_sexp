@@ -1,5 +1,4 @@
 require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
-require File.expand_path('../codeminer_sexp/formatters/bodystmt', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/binary', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/condition', __FILE__)
@@ -11,6 +10,7 @@ require File.expand_path('../codeminer_sexp/formatters/params', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string_embexp', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/void', __FILE__)
 
 module CodeMiner
 
@@ -23,12 +23,12 @@ module CodeMiner
         string: String,
         root: Root,
         params: Params,
-        bodystmt: Bodystmt,
         int: Int,
         assign: LocalAssign,
         condition: Condition,
         binary: Binary,
         command: Call,
+        void: Void,
     }
 
   end
