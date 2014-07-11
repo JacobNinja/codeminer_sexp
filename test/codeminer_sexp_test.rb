@@ -27,4 +27,10 @@ a = 5
     RUBY
   end
 
+  def test_command
+    assert_equal [:call, [:call, 'array', nil], :push, [:int, '1']], sexp_result(<<-RUBY, CodeMiner::Formatters::Command)
+array.push 1
+    RUBY
+  end
+
 end

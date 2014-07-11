@@ -1,6 +1,7 @@
 require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/bodystmt', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/command', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/condition', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/int', __FILE__)
@@ -27,6 +28,7 @@ module CodeMiner
         assign: LocalAssign,
         condition: Condition,
         binary: Call,
+        command: Command,
     }
 
   end
