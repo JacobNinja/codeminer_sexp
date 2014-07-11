@@ -21,4 +21,10 @@ a = 5
     CODE
   end
 
+  def test_binary
+    assert_equal [:call, [:int, '1'], :+, [:int, '1']], sexp_result(<<-RUBY, CodeMiner::Formatters::Call)
+1 + 1
+    RUBY
+  end
+
 end

@@ -26,6 +26,7 @@ module CodeMiner
         int: Int,
         assign: LocalAssign,
         condition: Condition,
+        binary: Call,
     }
 
   end

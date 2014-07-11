@@ -3,6 +3,10 @@ module CodeMiner
 
     class Call < CodeMiner::SexpFormatter
 
+      def type
+        :call
+      end
+
       def each
         exp.each.drop(1)
       end
@@ -13,7 +17,7 @@ module CodeMiner
       end
 
       def to_sexp
-        format(type, exp.receiver, value, each)
+        format(type, @parser.to_sexp(exp.receiver), value, each)
       end
 
     end
