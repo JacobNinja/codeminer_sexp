@@ -8,7 +8,11 @@ module CodeMiner
       end
 
       def each
-        exp.each.drop(1)
+        if exp.args
+          exp.args.each
+        else
+          []
+        end
       end
 
       def value

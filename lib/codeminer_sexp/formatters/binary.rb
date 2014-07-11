@@ -1,10 +1,10 @@
 module CodeMiner
   module Formatters
 
-    class Command < Call
+    class Binary < Call
 
       def each
-        super.first.each
+        exp.each.drop(1)
       end
 
     end

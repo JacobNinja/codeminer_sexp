@@ -8,7 +8,8 @@ module CodeMiner
       end
 
       def value
-        super.to_sym
+        value = super
+        value.to_sym if value
       end
 
     end

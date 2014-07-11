@@ -8,7 +8,7 @@ module CodeMiner
       end
 
       def format(*)
-        CodeMiner::Sexp.new([type, exp.variable, @parser.to_sexp(exp.default.value)], exp)
+        CodeMiner::Sexp.new([type, exp.variable, @parser.to_sexp(exp.default)], exp)
       end
 
     end
