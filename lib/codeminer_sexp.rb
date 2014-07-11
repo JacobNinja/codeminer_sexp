@@ -3,6 +3,7 @@ require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/int', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/keyword_param', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/local_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/params', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
@@ -21,6 +22,7 @@ module CodeMiner
         params: Params,
         bodystmt: Bodystmt,
         int: Int,
+        assign: LocalAssign,
     }
 
   end

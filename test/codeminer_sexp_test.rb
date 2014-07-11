@@ -15,4 +15,10 @@ class CodeMinerSexpTest < Test::Unit::TestCase
     CODE
   end
 
+  def test_local_assign
+    assert_equal [:lasgn, :a, [:int, '5']], sexp_result(<<-CODE, CodeMiner::Formatters::LocalAssign)
+a = 5
+    CODE
+  end
+
 end
