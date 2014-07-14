@@ -31,4 +31,10 @@ $!
     CODE
   end
 
+  def test_nil
+    assert_equal_sexp [:nil], sexp_result(<<-CODE, nil: CodeMiner::Formatters::Nil)
+nil
+    CODE
+  end
+
 end
