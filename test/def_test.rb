@@ -35,4 +35,24 @@ end
     RUBY
   end
 
+  def test_rescue_no_assignment
+    assert_equal_sexp [:defn, :foo, Any, [:rescue, [:call, 'bar', nil], [:resbody, [:array, [:constant, 'Exception']], [:call, 'baz', nil]]]], sexp_result(<<-RUBY)
+def foo
+  bar
+rescue Exception
+  baz
+end
+    RUBY
+  end
+
+  def test_bare_rescue
+    assert_equal_sexp [:defn, :foo, Any, [:rescue, [:call, 'bar', nil], [:resbody, [:array], [:call, 'baz', nil]]]], sexp_result(<<-RUBY)
+def foo
+  bar
+rescue
+  baz
+end
+    RUBY
+  end
+
 end
