@@ -19,4 +19,10 @@ a = 5
     CODE
   end
 
+  def test_constant
+    assert_equal_sexp [:const, :RuntimeError], sexp_result(<<-CODE, constant: CodeMiner::Formatters::Constant)
+RuntimeError
+    CODE
+  end
+
 end
