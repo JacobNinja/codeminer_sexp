@@ -5,6 +5,7 @@ require File.expand_path('../codeminer_sexp/formatters/condition', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/constant', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defn', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/global_variable', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/int', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/keyword_param', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_assign', __FILE__)
@@ -36,6 +37,7 @@ module CodeMiner
         void: Void,
         defn: Defn,
         constant: Constant,
+        global_variable: GlobalVariable,
     }
 
   end
