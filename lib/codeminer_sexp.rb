@@ -2,6 +2,7 @@ require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/binary', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/condition', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/defn', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/int', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/keyword_param', __FILE__)
@@ -29,6 +30,7 @@ module CodeMiner
         binary: Binary,
         command: Call,
         void: Void,
+        defn: Defn,
     }
 
   end
