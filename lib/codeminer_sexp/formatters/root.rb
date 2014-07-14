@@ -4,7 +4,7 @@ module CodeMiner
     class Root < CodeMiner::SexpFormatter
 
       def format(*args, children)
-        if children.count == 1
+        if children.count <= 1
           children.first
         else
           body = BodyExpression.from(*children)

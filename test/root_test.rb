@@ -19,4 +19,8 @@ class RootTest < TestCase
     RUBY
   end
 
+  def test_empty
+    assert_nil sexp_result('')
+  end
+
 end
