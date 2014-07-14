@@ -7,7 +7,8 @@ module CodeMiner
         if children.count == 1
           children.first
         else
-          children
+          body = BodyExpression.from(*children)
+          Body.new(body, @parser).to_sexp
         end
       end
 
