@@ -15,4 +15,24 @@ end
     RUBY
   end
 
+  def test_body_with_method_calls
+    assert_equal_sexp [:defn, :foo, Any, [:call, 'bar', nil], [:call, 'baz', nil]], sexp_result(<<-RUBY)
+def foo
+  bar
+
+  baz
+end
+    RUBY
+  end
+
+  def test_body_with_rescue
+    assert_equal_sexp [:defn, :foo, Any, [:rescue, [:call, 'bar', nil], [:resbody, [:array, [:constant, 'Exception'], [:lasgn, :e, [:global_variable, '$!']]], [:call, 'baz', nil]]]], sexp_result(<<-RUBY)
+def foo
+  bar
+rescue Exception => e
+  baz
+end
+    RUBY
+  end
+
 end

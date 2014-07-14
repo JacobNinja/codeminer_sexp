@@ -1,3 +1,5 @@
+require File.expand_path('../rescue', __FILE__)
+
 module CodeMiner
   module Formatters
 
@@ -9,7 +11,11 @@ module CodeMiner
       end
 
       def to_sexp
-        format(type, value, exp.params, exp.body.each)
+        if exp.body.rescue
+          format(type, value, exp.params, [Rescue.new(exp.body.rescue, @parser, exp.body.body.each).to_sexp])
+        else
+          format(type, value, exp.params, exp.body.each)
+        end
       end
 
       def format(*nodes, body)

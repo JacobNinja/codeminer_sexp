@@ -12,9 +12,9 @@ class TestCase < Test::Unit::TestCase
   end
 
   def assert_equal_sexp(expected, result)
-    assert_equal expected.length, result.to_a.length, "Expected length of\n#{expected}\nto match\n#{result}"
+    assert_equal expected.length, result.to_a.length, "Expected length of\n#{expected}\nto match\n#{result.to_a}"
     expected.zip(result.to_a).each do |(e, r)|
-      if e.respond_to?(:each)
+      if e.respond_to?(:each) && r.respond_to?(:each)
         assert_equal_sexp(e.to_a, r.to_a)
       else
         assert e == r, "Expected #{e} to == #{r}"
