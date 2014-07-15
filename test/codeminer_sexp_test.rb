@@ -62,4 +62,10 @@ $foo = 1
     RUBY
   end
 
+  def test_class_variable_assign
+    assert_equal_sexp [:casgn, :@@foo, [:int, '1']], sexp_result(<<-RUBY, class_variable_assign: CodeMiner::Formatters::ClassVariableAssign)
+@@foo = 1
+    RUBY
+  end
+
 end
