@@ -2,6 +2,7 @@ require File.expand_path('../codeminer_sexp/formatters/block', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/binary', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/class', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/class_variable', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/class_variable_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/condition', __FILE__)
@@ -50,6 +51,7 @@ module CodeMiner
         local_variable: LocalVariable,
         instance_variable: InstanceVariable,
         instance_variable_assign: InstanceVariableAssign,
+        class: Class,
     }
 
   end
