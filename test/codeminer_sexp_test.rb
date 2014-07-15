@@ -2,9 +2,9 @@ require File.expand_path('../test_helper', __FILE__)
 
 class CodeMinerSexpTest < TestCase
 
-  def sexp_result(code, formatters)
+  def sexp_result(code, formatters, idx: 0)
     ast = CodeMiner.sexp(code, formatters)
-    ast.each.first
+    ast.each[idx]
   end
 
   def test_int
@@ -35,6 +35,13 @@ $!
     assert_equal_sexp [:nil], sexp_result(<<-CODE, nil: CodeMiner::Formatters::Nil)
 nil
     CODE
+  end
+
+  def test_local_variable
+    assert_equal_sexp [:lvar, :foo], sexp_result(<<-RUBY, {local_variable: CodeMiner::Formatters::LocalVariable}, idx: 1)
+foo = bar()
+foo
+    RUBY
   end
 
 end
