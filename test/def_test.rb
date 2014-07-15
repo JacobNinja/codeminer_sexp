@@ -4,7 +4,8 @@ class DefTest < TestCase
 
   def sexp_result(code)
     ast = CodeMiner.sexp(code, {defn: CodeMiner::Formatters::Defn,
-                                void: CodeMiner::Formatters::Void})
+                                void: CodeMiner::Formatters::Void,
+                                defs: CodeMiner::Formatters::Defs,})
     ast.each.first
   end
 
@@ -51,6 +52,14 @@ def foo
   bar
 rescue
   baz
+end
+    RUBY
+  end
+
+  def test_defs
+    assert_equal_sexp [:defs, [:constant, 'Object'], :foo, Any, [:call, 'bar', nil]], sexp_result(<<-RUBY)
+def Object.foo
+  bar
 end
     RUBY
   end
