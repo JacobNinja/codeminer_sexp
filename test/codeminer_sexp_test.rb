@@ -50,4 +50,10 @@ foo
     RUBY
   end
 
+  def test_global_variable_assign
+    assert_equal_sexp [:gasgn, :$foo, [:int, '1']], sexp_result(<<-RUBY, global_variable_assign: CodeMiner::Formatters::GlobalVariableAssign)
+$foo = 1
+    RUBY
+  end
+
 end
