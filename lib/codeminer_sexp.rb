@@ -7,6 +7,7 @@ require File.expand_path('../codeminer_sexp/formatters/class_variable', __FILE__
 require File.expand_path('../codeminer_sexp/formatters/class_variable_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/condition', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/constant', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/constant_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defn', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defs', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
@@ -56,6 +57,7 @@ module CodeMiner
         instance_variable_assign: InstanceVariableAssign,
         class: Class,
         module: Module,
+        constant_assign: ConstantAssign,
     }
 
   end

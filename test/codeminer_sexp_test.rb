@@ -25,6 +25,12 @@ RuntimeError
     CODE
   end
 
+  def test_constant_assign
+    assert_equal_sexp [:cdecl, :Foo, [:int, '1']], sexp_result(<<-CODE, constant_assign: CodeMiner::Formatters::ConstantAssign)
+Foo = 1
+    CODE
+  end
+
   def test_global_variable
     assert_equal_sexp [:gvar, :$!], sexp_result(<<-CODE, global_variable: CodeMiner::Formatters::GlobalVariable)
 $!
