@@ -21,7 +21,11 @@ module CodeMiner
       end
 
       def to_sexp
-        format(type, @parser.to_sexp(exp.receiver), value, each)
+        if exp.block
+          Block.new(exp.block, @parser, format(type, @parser.to_sexp(exp.receiver), value, each)).to_sexp
+        else
+          format(type, @parser.to_sexp(exp.receiver), value, each)
+        end
       end
 
     end
