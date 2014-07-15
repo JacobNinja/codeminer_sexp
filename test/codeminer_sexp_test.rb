@@ -56,4 +56,10 @@ $foo = 1
     RUBY
   end
 
+  def test_instance_variable_assign
+    assert_equal_sexp [:iasgn, :@foo, [:int, '1']], sexp_result(<<-RUBY, instance_variable_assign: CodeMiner::Formatters::InstanceVariableAssign)
+@foo = 1
+    RUBY
+  end
+
 end

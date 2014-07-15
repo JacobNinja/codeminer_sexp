@@ -9,6 +9,7 @@ require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__
 require File.expand_path('../codeminer_sexp/formatters/global_variable', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/global_variable_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/instance_variable', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/instance_variable_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/int', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/keyword_param', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_assign', __FILE__)
@@ -46,6 +47,7 @@ module CodeMiner
         global_variable_assign: GlobalVariableAssign,
         local_variable: LocalVariable,
         instance_variable: InstanceVariable,
+        instance_variable_assign: InstanceVariableAssign,
     }
 
   end
