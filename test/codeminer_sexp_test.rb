@@ -44,4 +44,10 @@ foo
     RUBY
   end
 
+  def test_instance_variable
+    assert_equal_sexp [:ivar, :@foo], sexp_result(<<-RUBY, instance_variable: CodeMiner::Formatters::InstanceVariable)
+@foo
+    RUBY
+  end
+
 end
