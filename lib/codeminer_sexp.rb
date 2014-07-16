@@ -9,6 +9,7 @@ require File.expand_path('../codeminer_sexp/formatters/class_variable_assign', _
 require File.expand_path('../codeminer_sexp/formatters/condition', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/constant', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/constant_assign', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/colon2', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defn', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defs', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
@@ -60,6 +61,7 @@ module CodeMiner
         module: Module,
         constant_assign: ConstantAssign,
         aref_assign: ArefAssign,
+        colon2: Colon2,
     }
 
   end
