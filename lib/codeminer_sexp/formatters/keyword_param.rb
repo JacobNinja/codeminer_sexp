@@ -7,8 +7,8 @@ module CodeMiner
         :kwarg
       end
 
-      def format(*)
-        CodeMiner::Sexp.new([type, exp.variable, @parser.to_sexp(exp.default)], exp)
+      def to_sexp
+        format(type, [exp.variable, exp.default])
       end
 
     end

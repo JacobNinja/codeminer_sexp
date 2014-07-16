@@ -7,9 +7,9 @@ module CodeMiner
 
       def to_sexp
         if exp.body.rescue
-          format(type, exp.receiver, value, exp.params, [rescue_expression])
+          format(type, @parser.to_sexp(exp.receiver), value, [exp.params, rescue_expression])
         else
-          format(type, exp.receiver, value, exp.params, exp.body.each)
+          format(type, exp.receiver, value, [exp.params, *exp.body.each])
         end
       end
 

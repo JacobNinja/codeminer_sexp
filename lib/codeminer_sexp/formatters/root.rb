@@ -1,7 +1,7 @@
 module CodeMiner
   module Formatters
 
-    class Root < CodeMiner::SexpFormatter
+    class Root < SexpFormatter
 
       def format(*args, children)
         if children.count <= 1

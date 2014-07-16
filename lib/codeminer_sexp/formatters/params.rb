@@ -7,16 +7,15 @@ module CodeMiner
         :args
       end
 
-      def format(*args, children)
-        positional, optional, keyword = children
-        super(*args, [*positional.each.map(&:value), *optional_to_lasgn(optional), *keyword_to_kwarg(keyword)])
+      def to_sexp
+        format(type, [*exp.positional.each.map(&:value), *optional_to_lasgn(exp.optional), *keyword_to_kwarg(exp.keyword)])
       end
 
       private
 
       def optional_to_lasgn(optional)
         optional.each.map do |param|
-          @parser.to_sexp(CodeMiner::LocalAssignExpression.new(param.token, param.value, param.src_extract))
+          CodeMiner::LocalAssignExpression.new(param.token, param.value, param.src_extract)
         end
       end
 

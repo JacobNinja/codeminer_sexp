@@ -12,9 +12,9 @@ module CodeMiner
 
       def to_sexp
         if exp.body.rescue
-          format(type, value, exp.params, [rescue_expression])
+          format(type, value, @parser.to_sexp(exp.params), [rescue_expression])
         else
-          format(type, value, exp.params, exp.body.each)
+          format(type, value, @parser.to_sexp(exp.params), exp.body.each)
         end
       end
 
