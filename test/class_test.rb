@@ -4,7 +4,9 @@ class ClassTest < TestCase
 
   def sexp_result(code)
     ast = CodeMiner.sexp(code, {class: CodeMiner::Formatters::Class,
-                                module: CodeMiner::Formatters::Module})
+                                module: CodeMiner::Formatters::Module,
+                                sclass: CodeMiner::Formatters::SClass,
+    })
     ast.each.first
   end
 
@@ -33,6 +35,14 @@ end
   def test_module
     assert_equal_sexp [:module, :Foo, [:call, 'bar', nil]], sexp_result(<<-RUBY)
 module Foo
+  bar
+end
+    RUBY
+  end
+
+  def test_sclass
+    assert_equal_sexp [:sclass, [:call, 'foo', nil], [:call, 'bar', nil]], sexp_result(<<-RUBY)
+class << foo
   bar
 end
     RUBY

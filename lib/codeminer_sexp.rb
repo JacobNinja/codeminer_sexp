@@ -32,6 +32,7 @@ require File.expand_path('../codeminer_sexp/formatters/rescue', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_match', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/sclass', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string_embexp', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/symbol', __FILE__)
@@ -72,6 +73,7 @@ module CodeMiner
         colon3_assign: Colon3Assign,
         array: Array,
         symbol: Symbol,
+        sclass: SClass,
     }
 
   end
