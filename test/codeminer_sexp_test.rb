@@ -92,4 +92,24 @@ foo[0] = bar
     CODE
   end
 
+  def test_case
+    assert_equal_sexp [:case, [:call, 'foo', nil], [:when, [:array, [:call, 'bar', nil]], [:int, '1']]], sexp_result(<<-RUBY, case: CodeMiner::Formatters::Case, when: CodeMiner::Formatters::When)
+case foo
+  when bar
+    1
+end
+    RUBY
+  end
+
+  def test_case_else
+    assert_equal_sexp [:case, [:call, 'foo', nil], [:when, [:array, [:call, 'bar', nil]], [:int, '1']], [:int, '2']], sexp_result(<<-RUBY, case: CodeMiner::Formatters::Case, when: CodeMiner::Formatters::When)
+case foo
+  when bar
+    1
+  else
+    2
+end
+    RUBY
+  end
+
 end

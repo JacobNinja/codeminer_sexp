@@ -2,8 +2,9 @@ require File.expand_path('../codeminer_sexp/formatters/aref_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/array', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/block', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
-require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/binary', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/case', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/class', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/class_variable', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/class_variable_assign', __FILE__)
@@ -37,6 +38,7 @@ require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string_embexp', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/symbol', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/void', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/when', __FILE__)
 
 module CodeMiner
 
@@ -74,6 +76,8 @@ module CodeMiner
         array: Array,
         symbol: Symbol,
         sclass: SClass,
+        case: Case,
+        when: When,
     }
 
   end

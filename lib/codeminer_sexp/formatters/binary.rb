@@ -1,3 +1,5 @@
+require File.expand_path('../call', __FILE__)
+
 module CodeMiner
   module Formatters
 
