@@ -12,6 +12,7 @@ require File.expand_path('../codeminer_sexp/formatters/constant_assign', __FILE_
 require File.expand_path('../codeminer_sexp/formatters/colon2', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/colon2_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/colon3', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/colon3_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defn', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defs', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
@@ -66,6 +67,7 @@ module CodeMiner
         colon2: Colon2,
         colon2_assign: Colon2Assign,
         colon3: Colon3,
+        colon3_assign: Colon3Assign,
     }
 
   end
