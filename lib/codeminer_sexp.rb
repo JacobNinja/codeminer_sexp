@@ -34,6 +34,7 @@ require File.expand_path('../codeminer_sexp/formatters/rescue_match', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string_embexp', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/symbol', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/void', __FILE__)
 
 module CodeMiner
@@ -70,6 +71,7 @@ module CodeMiner
         colon3: Colon3,
         colon3_assign: Colon3Assign,
         array: Array,
+        symbol: Symbol,
     }
 
   end

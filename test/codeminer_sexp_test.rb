@@ -74,4 +74,10 @@ foo[0] = bar
     RUBY
   end
 
+  def test_symbol
+    assert_equal_sexp [:lit, :foo], sexp_result(<<-CODE, symbol: CodeMiner::Formatters::Symbol)
+:foo
+    CODE
+  end
+
 end
