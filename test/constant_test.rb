@@ -5,7 +5,8 @@ class ConstantTest < TestCase
   def sexp_result(code)
     ast = CodeMiner.sexp(code, {constant: CodeMiner::Formatters::Constant,
                                 constant_assign: CodeMiner::Formatters::ConstantAssign,
-                                colon2: CodeMiner::Formatters::Colon2,})
+                                colon2: CodeMiner::Formatters::Colon2,
+                                colon2_assign: CodeMiner::Formatters::Colon2Assign})
     ast.each.first
   end
 
@@ -24,6 +25,12 @@ Foo = 1
   def test_colon2
     assert_equal_sexp [:colon2, [:const, :Foo], :Bar], sexp_result(<<-CODE)
 Foo::Bar
+    CODE
+  end
+
+  def test_colon2_assign
+    assert_equal_sexp [:cdecl, [:colon2, [:const, :Foo], :Bar], [:int, '1']], sexp_result(<<-CODE)
+Foo::Bar = 1
     CODE
   end
 
