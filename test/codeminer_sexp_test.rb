@@ -13,6 +13,12 @@ class CodeMinerSexpTest < TestCase
     CODE
   end
 
+  def test_string
+    assert_equal_sexp [:str, 'foo'], sexp_result(<<-CODE, string: CodeMiner::Formatters::String)
+'foo'
+    CODE
+  end
+
   def test_local_assign
     assert_equal_sexp [:lasgn, :a, [:int, '5']], sexp_result(<<-CODE, assign: CodeMiner::Formatters::LocalAssign)
 a = 5
