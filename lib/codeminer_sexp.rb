@@ -1,4 +1,5 @@
 require File.expand_path('../codeminer_sexp/formatters/aref_assign', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/arguments', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/array', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/block', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
@@ -78,6 +79,7 @@ module CodeMiner
         sclass: SClass,
         case: Case,
         when: When,
+        arguments: Arguments,
     }
 
   end
