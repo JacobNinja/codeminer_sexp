@@ -25,7 +25,7 @@ module CodeMiner
         if exp.each.count == 1
           exp.each.first
         else
-          Body.new(exp, @parser)
+          Body.new(exp, @parser).to_sexp
         end
       end
 
