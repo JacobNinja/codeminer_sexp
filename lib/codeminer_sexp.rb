@@ -1,4 +1,5 @@
 require File.expand_path('../codeminer_sexp/formatters/aref_assign', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/array', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/block', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
@@ -68,6 +69,7 @@ module CodeMiner
         colon2_assign: Colon2Assign,
         colon3: Colon3,
         colon3_assign: Colon3Assign,
+        array: Array,
     }
 
   end
