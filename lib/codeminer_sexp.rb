@@ -1,3 +1,4 @@
+require File.expand_path('../codeminer_sexp/formatters/aref_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/block', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/call', __FILE__)
@@ -58,6 +59,7 @@ module CodeMiner
         class: Class,
         module: Module,
         constant_assign: ConstantAssign,
+        aref_assign: ArefAssign,
     }
 
   end
