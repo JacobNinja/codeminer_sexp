@@ -4,7 +4,11 @@ module CodeMiner
     class Array < SexpFormatter
 
       def each
-        exp.args.each
+        if exp.args
+          exp.args.each
+        else
+          []
+        end
       end
 
     end

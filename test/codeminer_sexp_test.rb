@@ -68,6 +68,12 @@ foo[0] = bar
     RUBY
   end
 
+  def test_empty_array
+    assert_equal_sexp [:array], sexp_result(<<-RUBY, array: CodeMiner::Formatters::Array)
+[]
+    RUBY
+  end
+
   def test_array
     assert_equal_sexp [:array, [:int, '1'], [:int, '2']], sexp_result(<<-RUBY, array: CodeMiner::Formatters::Array)
 [1, 2]
