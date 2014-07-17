@@ -120,4 +120,10 @@ super()
     RUBY
   end
 
+  def test_unary
+    assert_equal_sexp [:call, [:call, 'foo', nil], :!], sexp_result(<<-RUBY, unary: CodeMiner::Formatters::Unary)
+!foo
+    RUBY
+  end
+
 end
