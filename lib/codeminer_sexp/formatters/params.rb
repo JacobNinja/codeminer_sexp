@@ -8,10 +8,16 @@ module CodeMiner
       end
 
       def to_sexp
-        format(type, [*exp.positional.each.map(&:value), *optional_to_lasgn(exp.optional), *keyword_to_kwarg(exp.keyword)])
+        params = [*exp.positional.each.map(&:value), *optional_to_lasgn(exp.optional), *keyword_to_kwarg(exp.keyword)]
+        params << splat if exp.splat
+        format(type, params)
       end
 
       private
+
+      def splat
+        exp.splat.src.to_sym
+      end
 
       def optional_to_lasgn(optional)
         optional.each.map do |param|

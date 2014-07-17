@@ -28,4 +28,11 @@ end
     RUBY
   end
 
+  def test_splat
+    assert_equal_sexp [:args, :'*bar'], sexp_result(<<-RUBY)
+def foo(*bar)
+end
+    RUBY
+  end
+
 end
