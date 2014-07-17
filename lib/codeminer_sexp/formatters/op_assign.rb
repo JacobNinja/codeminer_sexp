@@ -16,14 +16,26 @@ module CodeMiner
       end
 
       def to_sexp
-        if type = TYPES[exp.op.value]
-          format(type, [exp.variable, local_assign(exp)])
+        if op_asgn1?
+          format(:op_asgn1, [exp.receiver.receiver, arglist, exp.op.value.chomp('=').to_sym, exp.body])
         else
-          local_assign(exp, body_to_call)
+          if type = TYPES[exp.op.value]
+            format(type, [exp.variable, local_assign(exp)])
+          else
+            local_assign(exp, body_to_call)
+          end
         end
       end
 
       private
+
+      def op_asgn1?
+        exp.receiver.type == :aref_field && exp.op.value == '||='
+      end
+
+      def arglist
+        Arglist.new(exp.receiver.args, @parser).to_sexp
+      end
 
       def local_assign(exp, body=exp.body)
         local = LocalAssignExpression.new(exp.variable, body, exp.src_extract)

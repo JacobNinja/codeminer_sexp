@@ -1,4 +1,5 @@
 require File.expand_path('../codeminer_sexp/formatters/aref_assign', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/arglist', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/arguments', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/attribute_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/array', __FILE__)
