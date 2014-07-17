@@ -40,6 +40,7 @@ require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/sclass', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string_embexp', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/super', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/symbol', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/void', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/when', __FILE__)
@@ -85,6 +86,7 @@ module CodeMiner
         arguments: Arguments,
         attribute_assign: AttributeAssign,
         op_assign: OpAssign,
+        super: Super,
     }
 
   end
