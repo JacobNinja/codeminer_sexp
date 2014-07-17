@@ -3,6 +3,11 @@ module CodeMiner
 
     class Call < CodeMiner::SexpFormatter
 
+      TYPES = {
+          '||' => :or,
+          '&&' => :and,
+      }
+
       def type
         :call
       end
@@ -17,10 +22,15 @@ module CodeMiner
       end
 
       def to_sexp
-        if exp.block
-          Block.new(exp.block, @parser, format(type, @parser.to_sexp(exp.receiver), value, each)).to_sexp
+        if t = TYPES[exp.value]
+          format(t, [exp.receiver, exp.body])
         else
-          format(type, @parser.to_sexp(exp.receiver), value, each)
+          sexp = format(type, @parser.to_sexp(exp.receiver), value, each)
+          if exp.block
+            Block.new(exp.block, @parser, sexp).to_sexp
+          else
+            sexp
+          end
         end
       end
 

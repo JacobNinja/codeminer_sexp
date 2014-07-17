@@ -40,4 +40,16 @@ foo(&bar)
     RUBY
   end
 
+  def test_or
+    assert_equal_sexp [:or, [:call, nil, :foo], [:call, nil, :bar]], sexp_result(<<-RUBY)
+foo || bar
+    RUBY
+  end
+
+  def test_and
+    assert_equal_sexp [:and, [:call, nil, :foo], [:call, nil, :bar]], sexp_result(<<-RUBY)
+foo && bar
+    RUBY
+  end
+
 end
