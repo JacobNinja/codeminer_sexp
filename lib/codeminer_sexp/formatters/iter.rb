@@ -12,16 +12,22 @@ module CodeMiner
         :iter
       end
 
-      def each
-        if exp.params
-          super
+      def to_sexp
+        format(type, @body, [params, *body])
+      end
+
+      private
+
+      def body
+        if exp.body.each.length > 1
+          [Body.new(exp.body, @parser).to_sexp]
         else
-          [ParamsExpression.empty, *super.drop(1)]
+          exp.body.each
         end
       end
 
-      def to_sexp
-        format(type, @body, each)
+      def params
+        exp.params || ParamsExpression.empty
       end
 
     end

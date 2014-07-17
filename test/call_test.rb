@@ -34,6 +34,15 @@ foo { bar }
     RUBY
   end
 
+  def test_iter_block
+    assert_equal_sexp [:iter, [:call, nil, :foo], [:args], [:block, [:call, nil, :bar], [:call, nil, :baz]]], sexp_result(<<-rUBY)
+foo do
+  bar
+  baz
+end
+    rUBY
+  end
+
   def test_block_pass
     assert_equal_sexp [:call, nil, :foo, [:block_pass, [:call, nil, :bar]]], sexp_result(<<-RUBY)
 foo(&bar)
