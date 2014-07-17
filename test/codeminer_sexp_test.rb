@@ -114,4 +114,10 @@ super
     RUBY
   end
 
+  def test_zsuper_with_parens
+    assert_equal_sexp [:super], sexp_result(<<-RUBY, super: CodeMiner::Formatters::Super)
+super()
+    RUBY
+  end
+
 end
