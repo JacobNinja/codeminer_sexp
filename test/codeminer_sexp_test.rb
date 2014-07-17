@@ -68,12 +68,6 @@ $foo = 1
     RUBY
   end
 
-  def test_aref_assign
-    assert_equal_sexp [:attrasgn, [:call, 'foo', nil], :[]=, [:int, '0'], [:call, 'bar', nil]], sexp_result(<<-RUBY, aref_assign: CodeMiner::Formatters::ArefAssign)
-foo[0] = bar
-    RUBY
-  end
-
   def test_empty_array
     assert_equal_sexp [:array], sexp_result(<<-RUBY, array: CodeMiner::Formatters::Array)
 []
