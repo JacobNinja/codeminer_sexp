@@ -6,7 +6,10 @@ class CallTest < TestCase
     ast = CodeMiner.sexp(code, {call: CodeMiner::Formatters::Call,
                                 binary: CodeMiner::Formatters::Binary,
                                 command: CodeMiner::Formatters::Call,
-                                params: CodeMiner::Formatters::Params})
+                                params: CodeMiner::Formatters::Params,
+                                positional_param: CodeMiner::Formatters::PositionalParam,
+                                destructured_params: CodeMiner::Formatters::DestructuredParams,
+    })
     ast.each.first
   end
 
@@ -58,6 +61,12 @@ foo || bar
   def test_and
     assert_equal_sexp [:and, [:call, nil, :foo], [:call, nil, :bar]], sexp_result(<<-RUBY)
 foo && bar
+    RUBY
+  end
+
+  def test_destructure
+    assert_equal_sexp [:iter, [:call, nil, :foo], [:args, [:masgn, :a, :b], :c]], sexp_result(<<-RUBY)
+foo{|(a, b), c|}
     RUBY
   end
 

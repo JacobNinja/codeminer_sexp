@@ -17,7 +17,9 @@ module CodeMiner
       private
 
       def positional
-        exp.positional.each.map(&:value).map(&:to_sym)
+        exp.positional.each do |param|
+          @parser.to_sexp(param)
+        end
       end
 
       def splat

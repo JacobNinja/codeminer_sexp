@@ -3,7 +3,8 @@ require File.expand_path('../test_helper', __FILE__)
 class ParamsTest < TestCase
 
   def sexp_result(code)
-    ast = CodeMiner.sexp(code, {params: CodeMiner::Formatters::Params})
+    ast = CodeMiner.sexp(code, {params: CodeMiner::Formatters::Params,
+                                positional_param: CodeMiner::Formatters::PositionalParam})
     ast.each.first.params
   end
 

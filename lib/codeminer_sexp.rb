@@ -21,6 +21,7 @@ require File.expand_path('../codeminer_sexp/formatters/colon3', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/colon3_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defn', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/defs', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/destructured_params', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/dynamic_string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/global_variable', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/global_variable_assign', __FILE__)
@@ -34,6 +35,7 @@ require File.expand_path('../codeminer_sexp/formatters/module', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/nil', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/op_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/params', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/positional_param', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_match', __FILE__)
@@ -90,6 +92,8 @@ module CodeMiner
         op_assign: OpAssign,
         super: Super,
         unary: Unary,
+        destructured_params: DestructuredParams,
+        positional_param: PositionalParam,
     }
 
   end
