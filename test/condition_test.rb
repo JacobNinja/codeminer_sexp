@@ -59,4 +59,14 @@ end
     RUBY
   end
 
+  def test_elsif
+    assert_equal_sexp [:if, [:call, 'foo', nil], [:int, '1'], [:if, [:call, 'bar', nil], [:int, '2'], nil]], sexp_result(<<-RUBY)
+if foo
+  1
+elsif bar
+  2
+end
+    RUBY
+  end
+
 end
