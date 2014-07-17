@@ -8,21 +8,21 @@ class ParamsTest < TestCase
   end
 
   def test_positional
-    assert_equal_sexp [:args, 'a', 'b'], sexp_result(<<-RUBY)
+    assert_equal_sexp [:args, :a, :b], sexp_result(<<-RUBY)
 def foo(a, b)
 end
     RUBY
   end
 
   def test_optional
-    assert_equal_sexp [:args, 'a', [:assign, 'b', [:nil, 'nil']]], sexp_result(<<-RUBY)
+    assert_equal_sexp [:args, :a, [:assign, 'b', [:nil, 'nil']]], sexp_result(<<-RUBY)
 def foo(a, b=nil)
 end
     RUBY
   end
 
   def test_keyword
-    assert_equal_sexp [:args, 'a', [:kwarg, 'b', [:nil, 'nil']]], sexp_result(<<-RUBY)
+    assert_equal_sexp [:args, :a, [:kwarg, 'b', [:nil, 'nil']]], sexp_result(<<-RUBY)
 def foo(a, b: nil)
 end
     RUBY
