@@ -8,11 +8,7 @@ module CodeMiner
       end
 
       def each
-        if exp.args
-          exp.args.each
-        else
-          []
-        end
+        [*args, block_pass].compact
       end
 
       def value
@@ -25,6 +21,20 @@ module CodeMiner
           Block.new(exp.block, @parser, format(type, @parser.to_sexp(exp.receiver), value, each)).to_sexp
         else
           format(type, @parser.to_sexp(exp.receiver), value, each)
+        end
+      end
+
+      private
+
+      def args
+        if exp.args
+          exp.args.each
+        end
+      end
+
+      def block_pass
+        if exp.args && exp.args.block
+          BlockPass.new(exp.args.block, @parser).to_sexp
         end
       end
 

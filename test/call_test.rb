@@ -34,4 +34,10 @@ foo { bar }
     RUBY
   end
 
+  def test_block_pass
+    assert_equal_sexp [:call, nil, :foo, [:block_pass, [:call, nil, :bar]]], sexp_result(<<-RUBY)
+foo(&bar)
+    RUBY
+  end
+
 end
