@@ -1,7 +1,7 @@
 module CodeMiner
   module Formatters
 
-    class Block < CodeMiner::SexpFormatter
+    class Iter < CodeMiner::SexpFormatter
 
       def initialize(*args, body)
         super(*args)

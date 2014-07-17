@@ -27,7 +27,7 @@ module CodeMiner
         else
           sexp = format(type, @parser.to_sexp(exp.receiver), value, each)
           if exp.block
-            Block.new(exp.block, @parser, sexp).to_sexp
+            Iter.new(exp.block, @parser, sexp).to_sexp
           else
             sexp
           end
