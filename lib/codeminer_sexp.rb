@@ -30,6 +30,7 @@ require File.expand_path('../codeminer_sexp/formatters/local_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_variable', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/module', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/nil', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/op_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/params', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_body', __FILE__)
@@ -82,6 +83,7 @@ module CodeMiner
         when: When,
         arguments: Arguments,
         attribute_assign: AttributeAssign,
+        op_assign: OpAssign,
     }
 
   end
