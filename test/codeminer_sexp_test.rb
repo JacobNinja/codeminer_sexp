@@ -87,10 +87,12 @@ $foo = 1
   end
 
   def test_case
-    assert_equal_sexp [:case, [:call, 'foo', nil], [:when, [:array, [:call, 'bar', nil]], [:int, '1']]], sexp_result(<<-RUBY, case: CodeMiner::Formatters::Case, when: CodeMiner::Formatters::When)
+    assert_equal_sexp [:case, [:call, 'foo', nil], [:when, [:array, [:call, 'bar', nil]], [:int, '1']], [:when, [:array, [:call, 'baz', nil]], [:int, '2']]], sexp_result(<<-RUBY, case: CodeMiner::Formatters::Case, when: CodeMiner::Formatters::When)
 case foo
   when bar
     1
+  when baz
+    2
 end
     RUBY
   end

@@ -4,7 +4,7 @@ module CodeMiner
     class When < CodeMiner::SexpFormatter
 
       def to_sexp
-        format(type, args_as_array, [*exp.body.each])
+        format(type, args_as_array, exp.body.each)
       end
 
       private
