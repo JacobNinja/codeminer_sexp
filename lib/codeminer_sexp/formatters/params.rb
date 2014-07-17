@@ -10,6 +10,7 @@ module CodeMiner
       def to_sexp
         params = [*positional, *optional_to_lasgn(exp.optional), *keyword_to_kwarg(exp.keyword)]
         params << splat if exp.splat
+        params << block if exp.block
         format(type, params)
       end
 
@@ -33,6 +34,10 @@ module CodeMiner
         keyword.each.map do |param|
           KeywordParam.new(param, @parser).to_sexp
         end
+      end
+
+      def block
+        exp.block.src.to_sym
       end
 
     end

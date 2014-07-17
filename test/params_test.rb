@@ -35,4 +35,11 @@ end
     RUBY
   end
 
+  def test_block_arg
+    assert_equal_sexp [:args, :bar, :'&block'], sexp_result(<<-RUBY)
+def foo(bar, &block)
+end
+    RUBY
+  end
+
 end
