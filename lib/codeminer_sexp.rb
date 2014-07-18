@@ -30,8 +30,10 @@ require File.expand_path('../codeminer_sexp/formatters/instance_variable_assign'
 require File.expand_path('../codeminer_sexp/formatters/int', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/keyword_param', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_assign', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/local_assign_no_body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_variable', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/module', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/multiple_assignment', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/nil', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/op_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/params', __FILE__)
@@ -41,10 +43,12 @@ require File.expand_path('../codeminer_sexp/formatters/rescue_body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_match', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/sclass', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/splat', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string_embexp', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/super', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/symbol', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/to_array', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/unary', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/void', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/when', __FILE__)
@@ -94,6 +98,7 @@ module CodeMiner
         unary: Unary,
         destructured_params: DestructuredParams,
         positional_param: PositionalParam,
+        massign: MultipleAssignment,
     }
 
   end

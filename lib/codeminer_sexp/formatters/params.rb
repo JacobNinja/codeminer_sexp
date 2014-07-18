@@ -17,8 +17,12 @@ module CodeMiner
       private
 
       def positional
-        exp.positional.each do |param|
-          @parser.to_sexp(param)
+        exp.positional.each.map do |param|
+          if param.type == :mlhs
+            DestructuredParams.new(param, @parser).to_sexp
+          else
+            @parser.to_sexp(param)
+          end
         end
       end
 
