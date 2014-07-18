@@ -52,6 +52,12 @@ foo(&bar)
     RUBY
   end
 
+  def test_block_pass2
+    assert_equal_sexp [:call, nil, :foo, [:block_pass, [:iter, [:call, nil, :bar], [:args], [:nil]]]], sexp_result(<<-RUBY)
+foo(&bar{ nil })
+    RUBY
+  end
+
   def test_or
     assert_equal_sexp [:or, [:call, nil, :foo], [:call, nil, :bar]], sexp_result(<<-RUBY)
 foo || bar

@@ -44,7 +44,7 @@ module CodeMiner
 
       def block_pass
         if exp.args && exp.args.block
-          BlockPass.new(exp.args.block, @parser).to_sexp
+          BlockPass.new(exp.args.block, @parser, exp.args).to_sexp
         end
       end
 
