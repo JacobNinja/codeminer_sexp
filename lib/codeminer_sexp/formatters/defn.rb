@@ -1,3 +1,4 @@
+require File.expand_path('../ensure', __FILE__)
 require File.expand_path('../rescue', __FILE__)
 
 module CodeMiner
@@ -13,6 +14,8 @@ module CodeMiner
       def to_sexp
         if exp.body.rescue
           format(type, value, @parser.to_sexp(exp.params), [rescue_expression])
+        elsif exp.body.ensure
+          format(type, value, @parser.to_sexp(exp.params), [ensure_expression])
         else
           format(type, value, @parser.to_sexp(exp.params), exp.body.each)
         end
@@ -30,6 +33,10 @@ module CodeMiner
 
       def rescue_expression
         Rescue.new(exp.body.rescue, @parser, exp.body.body.each).to_sexp
+      end
+
+      def ensure_expression
+        Ensure.new(exp.body.ensure, @parser, exp.body.body.each).to_sexp
       end
 
     end

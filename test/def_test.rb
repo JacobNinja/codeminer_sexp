@@ -64,4 +64,14 @@ end
     RUBY
   end
 
+  def test_ensure
+    assert_equal_sexp [:defn, :foo, Any, [:ensure, [:call, 'bar', nil], [:call, 'baz', nil]]], sexp_result(<<-RUBY)
+def foo
+  bar
+ensure
+  baz
+end
+    RUBY
+  end
+
 end
