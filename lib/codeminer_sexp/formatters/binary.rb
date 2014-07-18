@@ -9,6 +9,14 @@ module CodeMiner
         exp.each.drop(1)
       end
 
+      def to_sexp
+        if exp.value == '=~'
+          format(:match3, @parser.to_sexp(exp.body), [exp.receiver])
+        else
+          super
+        end
+      end
+
     end
 
   end

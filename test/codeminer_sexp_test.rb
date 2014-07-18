@@ -138,4 +138,10 @@ super()
     RUBY
   end
 
+  def test_match3
+    assert_equal_sexp [:match3, [:regexp, '/bar/', [:string, 'bar']], [:call, 'foo', nil]], sexp_result(<<-RUBY, binary: CodeMiner::Formatters::Binary)
+foo =~ /bar/
+    RUBY
+  end
+
 end
