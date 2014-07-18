@@ -156,4 +156,10 @@ foo =~ /bar/
     RUBY
   end
 
+  def test_line
+    assert_equal_sexp [:lit, 1], sexp_result(<<-RUBY, local_variable: CodeMiner::Formatters::LocalVariable)
+__LINE__
+    RUBY
+  end
+
 end
