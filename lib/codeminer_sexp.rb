@@ -41,6 +41,7 @@ require File.expand_path('../codeminer_sexp/formatters/nil', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/op_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/params', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/positional_param', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/regexp', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_match', __FILE__)
@@ -104,6 +105,7 @@ module CodeMiner
         massign: MultipleAssignment,
         begin: Begin,
         lambda: Lambda,
+        regexp: Regexp,
     }
 
   end
