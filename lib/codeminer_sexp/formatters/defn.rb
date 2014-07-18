@@ -23,7 +23,7 @@ module CodeMiner
 
       def format(*nodes, body)
         if body.empty?
-          Sexp.new([*nodes, [:nil]], exp)
+          Sexp.new([*nodes, Nil.new(exp, @parser).to_sexp], exp)
         else
           super
         end
