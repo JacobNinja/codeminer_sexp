@@ -1,5 +1,6 @@
 require File.expand_path('../ensure', __FILE__)
 require File.expand_path('../rescue', __FILE__)
+require File.expand_path('../body_maybe', __FILE__)
 
 module CodeMiner
   module Formatters
@@ -32,11 +33,11 @@ module CodeMiner
       private
 
       def rescue_expression
-        Rescue.new(exp.body.rescue, @parser, exp.body.body.each).to_sexp
+        Rescue.new(exp.body.rescue, @parser, BodyMaybe.new(exp.body.body, @parser).to_sexp).to_sexp
       end
 
       def ensure_expression
-        Ensure.new(exp.body.ensure, @parser, exp.body.body.each).to_sexp
+        Ensure.new(exp.body.ensure, @parser, BodyMaybe.new(exp.body.body, @parser).to_sexp).to_sexp
       end
 
     end

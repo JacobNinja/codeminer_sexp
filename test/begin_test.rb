@@ -42,4 +42,16 @@ end
     RUBY
   end
 
+  def test_ensure_block
+    assert_equal_sexp [:ensure, [:block, [:call, 'foo', nil], [:call, 'foo2', nil]], [:block, [:call, 'bar', nil], [:call, 'bar2', nil]]], sexp_result(<<-RUBY)
+begin
+  foo
+  foo2
+ensure
+  bar
+  bar2
+end
+    RUBY
+  end
+
 end

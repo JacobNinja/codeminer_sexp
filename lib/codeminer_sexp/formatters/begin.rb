@@ -41,11 +41,11 @@ module CodeMiner
       private
 
       def rescue_expression
-        Rescue.new(exp.rescue, @parser, exp.body.each).to_sexp
+        Rescue.new(exp.rescue, @parser, BodyMaybe.new(exp.body, @parser).to_sexp).to_sexp
       end
 
       def ensure_expression
-        Ensure.new(exp.ensure, @parser, exp.body.each).to_sexp
+        Ensure.new(exp.ensure, @parser, BodyMaybe.new(exp.body, @parser).to_sexp).to_sexp
       end
 
     end
