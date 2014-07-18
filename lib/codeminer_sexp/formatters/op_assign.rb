@@ -18,6 +18,8 @@ module CodeMiner
       def to_sexp
         if op_asgn1?
           format(:op_asgn1, [exp.receiver.receiver, arglist, exp.op.value.chomp('=').to_sym, exp.body])
+        elsif op_asgn2?
+          format(:op_asgn2, [exp.receiver.receiver, :"#{exp.receiver.value}=", exp.op.value.chomp('=').to_sym, exp.body])
         else
           if type = TYPES[exp.op.value]
             format(type, [exp.variable, local_assign(exp)])
@@ -31,6 +33,10 @@ module CodeMiner
 
       def op_asgn1?
         exp.receiver.type == :aref_field && exp.op.value == '||='
+      end
+
+      def op_asgn2?
+        exp.receiver.type == :field && exp.op.value == '+='
       end
 
       def arglist

@@ -26,4 +26,10 @@ foo[:bar] ||= baz
     RUBY
   end
 
+  def test_op_asgn2
+    assert_equal_sexp [:op_asgn2, [:call, nil, :foo], :bar=, :+, [:call, nil, :baz]], sexp_result(<<-RUBY)
+foo.bar += baz
+    RUBY
+  end
+
 end
