@@ -31,6 +31,7 @@ require File.expand_path('../codeminer_sexp/formatters/instance_variable', __FIL
 require File.expand_path('../codeminer_sexp/formatters/instance_variable_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/int', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/keyword_param', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/lambda', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_assign_no_body', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/local_variable', __FILE__)
@@ -102,6 +103,7 @@ module CodeMiner
         positional_param: PositionalParam,
         massign: MultipleAssignment,
         begin: Begin,
+        lambda: Lambda,
     }
 
   end

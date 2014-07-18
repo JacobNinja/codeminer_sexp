@@ -132,4 +132,10 @@ super()
     RUBY
   end
 
+  def test_lambda_no_args
+    assert_equal_sexp [:iter, [:call, 'lambda', nil], Any, [:call, 'foo', nil]], sexp_result(<<-RUBY, lambda: CodeMiner::Formatters::Lambda)
+-> { foo }
+    RUBY
+  end
+
 end
