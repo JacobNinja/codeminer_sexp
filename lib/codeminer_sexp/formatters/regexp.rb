@@ -15,6 +15,8 @@ module CodeMiner
 
       def value
         ::Regexp.compile(exp.src[1..-2])
+      rescue RegexpError
+        //
       end
 
       def each
