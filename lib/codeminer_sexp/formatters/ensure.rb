@@ -12,7 +12,7 @@ module CodeMiner
       end
 
       def each
-        [*@body.each, *ensure_body]
+        [*@body, *ensure_body]
       end
 
       private

@@ -19,10 +19,12 @@ module CodeMiner
       end
 
       def to_sexp
-        if exp.rescue
-          rescue_expression.to_sexp
+        if exp.rescue && exp.ensure
+          ensure_expression([rescue_expression]).to_sexp
+        elsif exp.rescue
+          rescue_expression
         elsif exp.ensure
-          ensure_expression.to_sexp
+          ensure_expression(body_maybe)
         else
           format(type, value, exp.body.each)
         end
@@ -41,11 +43,15 @@ module CodeMiner
       private
 
       def rescue_expression
-        Rescue.new(exp.rescue, @parser, BodyMaybe.new(exp.body, @parser).to_sexp).to_sexp
+        Rescue.new(exp.rescue, @parser, body_maybe).to_sexp
       end
 
-      def ensure_expression
-        Ensure.new(exp.ensure, @parser, BodyMaybe.new(exp.body, @parser).to_sexp).to_sexp
+      def ensure_expression(body)
+        Ensure.new(exp.ensure, @parser, body).to_sexp
+      end
+
+      def body_maybe
+        BodyMaybe.new(exp.body, @parser).to_sexp
       end
 
     end
