@@ -74,4 +74,17 @@ end
     RUBY
   end
 
+
+  def test_rescue_and_ensure
+    assert_equal_sexp [:defn, :test, Any, [:ensure, [:rescue, [:call, 'foo', nil], [:resbody, [:array], [:call, 'bar', nil]]], [:call, 'baz', nil]]], sexp_result(<<-RUBY)
+def test
+  foo
+rescue
+  bar
+ensure
+  baz
+end
+    RUBY
+  end
+
 end
