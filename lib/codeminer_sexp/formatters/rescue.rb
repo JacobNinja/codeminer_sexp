@@ -16,7 +16,7 @@ module CodeMiner
       end
 
       def each
-        [*@body.each, RescueBody.new(exp.body, @parser, RescueMatch.new(exp.match, @parser)).to_sexp]
+        [*@body.each, RescueBody.new(exp.body, @parser, RescueMatch.new(exp, @parser)).to_sexp]
       end
 
     end

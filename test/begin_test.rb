@@ -32,6 +32,16 @@ end
     RUBY
   end
 
+  def test_rescue_assign
+    assert_equal_sexp [:rescue, [:call, 'foo', nil], [:resbody, [:array, [:lasgn, :e, [:global_variable, '$!']]], [:call, 'bar', nil]]], sexp_result(<<-RUBY)
+begin
+  foo
+rescue => e
+  bar
+end
+    RUBY
+  end
+
   def test_ensure
     assert_equal_sexp [:ensure, [:call, 'foo', nil], [:call, 'bar', nil]], sexp_result(<<-RUBY)
 begin
