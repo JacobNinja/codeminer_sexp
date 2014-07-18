@@ -1,16 +1,15 @@
 require File.expand_path('../rescue', __FILE__)
+require File.expand_path('../rescue_formatter', __FILE__)
 
 module CodeMiner
   module Formatters
 
     class Defs < Defn
 
+      include RescueFormatter
+
       def to_sexp
-        if exp.body.rescue
-          format(type, @parser.to_sexp(exp.receiver), value, [exp.params, rescue_expression])
-        else
-          format(type, exp.receiver, value, [exp.params, *exp.body.each])
-        end
+        format(type, @parser.to_sexp(exp.receiver), value, [exp.params, *process(exp.body)])
       end
 
     end

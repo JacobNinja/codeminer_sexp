@@ -44,6 +44,7 @@ require File.expand_path('../codeminer_sexp/formatters/positional_param', __FILE
 require File.expand_path('../codeminer_sexp/formatters/regexp', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_body', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/rescue_formatter', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/rescue_match', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/sclass', __FILE__)
