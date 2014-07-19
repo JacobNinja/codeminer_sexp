@@ -3,12 +3,15 @@ module CodeMiner
 
     class Splat < CodeMiner::SexpFormatter
 
-      def value
-        LocalAssignNoBody.new(LocalAssignExpression.new(exp, nil, exp.src_extract), @parser).to_sexp
+      def each
+        super.map do |e|
+          call = CallExpression.new(e, e.src_extract)
+          Call.new(call, @parser).to_sexp
+        end
       end
 
-      def to_sexp
-        format(type, value, [])
+      def value
+        nil
       end
 
     end

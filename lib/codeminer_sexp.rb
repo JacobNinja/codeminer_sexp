@@ -49,6 +49,7 @@ require File.expand_path('../codeminer_sexp/formatters/rescue_match', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/root', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/sclass', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/splat', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/splat_local_assign', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/string_embexp', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/super', __FILE__)
@@ -107,6 +108,7 @@ module CodeMiner
         begin: Begin,
         lambda: Lambda,
         regexp: Regexp,
+        splat: Splat,
     }
 
   end

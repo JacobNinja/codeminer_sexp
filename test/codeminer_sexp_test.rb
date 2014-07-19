@@ -127,7 +127,7 @@ super()
   end
 
   def test_multiple_assignment
-    assert_equal_sexp [:masgn, [:array, [:splat, [:lasgn, :foo]], [:lasgn, :bar]], [:to_ary, [:call, 'baz', nil]]], sexp_result(<<-RUBY, massign: CodeMiner::Formatters::MultipleAssignment, destructured_params: CodeMiner::Formatters::DestructuredParams, splat: CodeMiner::Formatters::Splat)
+    assert_equal_sexp [:masgn, [:array, [:splat, [:lasgn, :foo]], [:lasgn, :bar]], [:to_ary, [:call, 'baz', nil]]], sexp_result(<<-RUBY, massign: CodeMiner::Formatters::MultipleAssignment, destructured_params: CodeMiner::Formatters::DestructuredParams, splat: CodeMiner::Formatters::SplatLocalAssign)
 *foo, bar = baz
     RUBY
   end

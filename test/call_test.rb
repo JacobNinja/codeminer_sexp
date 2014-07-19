@@ -9,6 +9,7 @@ class CallTest < TestCase
                                 params: CodeMiner::Formatters::Params,
                                 positional_param: CodeMiner::Formatters::PositionalParam,
                                 destructured_params: CodeMiner::Formatters::DestructuredParams,
+                                splat: CodeMiner::Formatters::Splat,
     })
     ast.each.first
   end
@@ -73,6 +74,12 @@ foo && bar
   def test_destructure
     assert_equal_sexp [:iter, [:call, nil, :foo], [:args, [:masgn, :a, :b], :c]], sexp_result(<<-RUBY)
 foo{|(a, b), c|}
+    RUBY
+  end
+
+  def test_splat
+    assert_equal_sexp [:call, nil, :foo, [:splat, [:call, nil, :bar]]], sexp_result(<<-RUBY)
+foo(*bar)
     RUBY
   end
 

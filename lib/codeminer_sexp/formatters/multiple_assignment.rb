@@ -17,7 +17,7 @@ module CodeMiner
       def lhs
         exp.lhs.each.map do |e|
           if e.type == :splat
-            Splat.new(e, @parser).to_sexp
+            SplatLocalAssign.new(e, @parser).to_sexp
           else
             local = LocalAssignExpression.new(e, nil, e.src_extract)
             LocalAssignNoBody.new(local, @parser).to_sexp
