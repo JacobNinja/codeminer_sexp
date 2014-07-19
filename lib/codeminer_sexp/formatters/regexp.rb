@@ -6,10 +6,18 @@ module CodeMiner
     class Regexp < SexpFormatter
 
       def type
-        if exp.each.any?{|e| e.type == :string_embexp }
+        if dynamic?
           :dregx
         else
           :lit
+        end
+      end
+
+      def each
+        if dynamic?
+          exp.each
+        else
+          exp.each.drop(1)
         end
       end
 
@@ -19,8 +27,10 @@ module CodeMiner
         //
       end
 
-      def each
-        exp.each.drop(1)
+      private
+
+      def dynamic?
+        exp.each.any?{|e| e.type == :string_embexp }
       end
 
     end

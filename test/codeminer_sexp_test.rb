@@ -151,7 +151,7 @@ foo =~ /bar/
   end
 
   def test_dynamic_regex
-    assert_equal_sexp [:dregx, Any], sexp_result(<<-RUBY, regexp: CodeMiner::Formatters::Regexp)
+    assert_equal_sexp [:dregx, Any, [:string_embexp, [:call, 'foo', nil]]], sexp_result(<<-RUBY, regexp: CodeMiner::Formatters::Regexp)
 /\#{foo}/
     RUBY
   end
