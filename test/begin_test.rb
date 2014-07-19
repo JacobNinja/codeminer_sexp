@@ -76,4 +76,16 @@ end
     RUBY
   end
 
+  def test_else
+    assert_equal_sexp [:rescue, [:call, 'foo', nil], [:resbody, [:array], [:call, 'bar', nil]], [:call, 'baz', nil]], sexp_result(<<-RUBY)
+begin
+  foo
+rescue
+  bar
+else
+  baz
+end
+    RUBY
+  end
+
 end

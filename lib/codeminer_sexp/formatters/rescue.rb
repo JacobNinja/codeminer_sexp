@@ -6,9 +6,10 @@ module CodeMiner
 
     class Rescue < SexpFormatter
 
-      def initialize(*args, body)
+      def initialize(*args, body, else_exp)
         super(*args)
         @body = body
+        @else_exp = else_exp
       end
 
       def type
@@ -16,7 +17,13 @@ module CodeMiner
       end
 
       def each
-        [*@body, RescueBody.new(exp.body, @parser, RescueMatch.new(exp, @parser)).to_sexp]
+        [*@body, RescueBody.new(exp.body, @parser, RescueMatch.new(exp, @parser)).to_sexp, *else_body]
+      end
+
+      private
+
+      def else_body
+        BodyMaybe.new(@else_exp, @parser).to_sexp if @else_exp
       end
 
     end

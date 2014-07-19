@@ -16,7 +16,7 @@ module CodeMiner
       end
 
       def rescue_expression(exp)
-        Rescue.new(exp.rescue, @parser, body_maybe(exp)).to_sexp
+        Rescue.new(exp.rescue, @parser, body_maybe(exp), exp.else).to_sexp
       end
 
       def ensure_expression(exp, body)
