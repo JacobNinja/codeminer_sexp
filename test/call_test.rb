@@ -83,4 +83,10 @@ foo(*bar)
     RUBY
   end
 
+  def test_splat_nested_exp
+    assert_equal_sexp [:call, nil, :foo, [:splat, [:call, nil, :bar, [:call, nil, :baz]]]], sexp_result(<<-RUBY)
+foo(*bar(baz))
+    RUBY
+  end
+
 end
