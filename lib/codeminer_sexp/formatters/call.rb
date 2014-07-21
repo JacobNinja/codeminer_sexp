@@ -5,7 +5,9 @@ module CodeMiner
 
       TYPES = {
           '||' => :or,
+          'or' => :or,
           '&&' => :and,
+          'and' => :and,
       }
 
       def type

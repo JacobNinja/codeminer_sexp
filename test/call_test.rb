@@ -59,15 +59,27 @@ foo(&bar{ nil })
     RUBY
   end
 
-  def test_or
+  def test_high_or
     assert_equal_sexp [:or, [:call, nil, :foo], [:call, nil, :bar]], sexp_result(<<-RUBY)
 foo || bar
     RUBY
   end
 
-  def test_and
+  def test_low_or
+    assert_equal_sexp [:or, [:int, '1'], [:int, '2']], sexp_result(<<-RUBY)
+1 or 2
+    RUBY
+  end
+
+  def test_high_and
     assert_equal_sexp [:and, [:call, nil, :foo], [:call, nil, :bar]], sexp_result(<<-RUBY)
 foo && bar
+    RUBY
+  end
+
+  def test_low_and
+    assert_equal_sexp [:and, [:call, nil, :foo], [:call, nil, :bar]], sexp_result(<<-RUBY)
+foo and bar
     RUBY
   end
 
