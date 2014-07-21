@@ -8,30 +8,34 @@ module CodeMiner
       end
 
       def each
-        [exp.test, consequence, else_expression]
+        [exp.test, *consequence, *else_expression]
       end
 
       def consequence
-        exp.consequence and wrap_body(exp.consequence)
+        if exp.consequence
+          wrap_body(exp.consequence)
+        else
+          [exp.consequence]
+        end
       end
 
       def else_expression
-        exp.else_statement and wrap_body_or_elsif(exp.else_statement)
+        if exp.else_statement
+          wrap_body_or_elsif(exp.else_statement)
+        else
+          [exp.else_statement]
+        end
       end
 
       private
 
       def wrap_body(exp)
-        if exp.each.count == 1
-          exp.each.first
-        else
-          Body.new(exp, @parser).to_sexp
-        end
+        BodyMaybe.new(exp, @parser).to_sexp
       end
 
       def wrap_body_or_elsif(exp)
         if exp && exp.token && exp.token.value == 'elsif'
-          Condition.new(exp, @parser).to_sexp
+          [Condition.new(exp, @parser).to_sexp]
         else
           wrap_body(exp)
         end
