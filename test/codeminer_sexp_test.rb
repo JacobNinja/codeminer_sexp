@@ -162,4 +162,16 @@ __LINE__
     RUBY
   end
 
+  def test_xstring
+    assert_equal_sexp [:xstr, 'foo'], sexp_result(<<-RUBY, xstring: CodeMiner::Formatters::XString)
+`foo`
+    RUBY
+  end
+
+  def test_dynamic_xstring
+    assert_equal_sexp [:dxstr, [:string_embexp, [:call, 'foo', nil]]], sexp_result(<<-RUBY, xstring: CodeMiner::Formatters::XString)
+`\#{foo}`
+    RUBY
+  end
+
 end

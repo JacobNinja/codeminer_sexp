@@ -58,6 +58,7 @@ require File.expand_path('../codeminer_sexp/formatters/to_array', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/unary', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/void', __FILE__)
 require File.expand_path('../codeminer_sexp/formatters/when', __FILE__)
+require File.expand_path('../codeminer_sexp/formatters/xstring', __FILE__)
 
 module CodeMiner
 
@@ -109,6 +110,7 @@ module CodeMiner
         lambda: Lambda,
         regexp: Regexp,
         splat: Splat,
+        xstring: XString,
     }
 
   end
