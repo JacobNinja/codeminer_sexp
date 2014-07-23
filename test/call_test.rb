@@ -101,4 +101,16 @@ foo(*bar(baz))
     RUBY
   end
 
+  def test_match3_with_regex_arg
+    assert_equal_sexp [:match3, [:regexp, [:string, 'bar']], [:call, nil, :foo]], sexp_result(<<-RUBY)
+foo =~ /bar/
+    RUBY
+  end
+
+  def test_match3_without_regex_arg
+    assert_equal_sexp [:call, [:call, nil, :foo], :=~, [:call, nil, :bar]], sexp_result(<<-RUBY)
+foo =~ bar
+    RUBY
+  end
+
 end

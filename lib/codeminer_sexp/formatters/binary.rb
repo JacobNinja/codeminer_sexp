@@ -10,11 +10,17 @@ module CodeMiner
       end
 
       def to_sexp
-        if exp.value == '=~'
+        if match3?
           format(:match3, @parser.to_sexp(exp.body), [exp.receiver])
         else
           super
         end
+      end
+
+      private
+
+      def match3?
+        exp.value == '=~' && exp.body.type == :regexp
       end
 
     end
