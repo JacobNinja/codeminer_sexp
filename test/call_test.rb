@@ -113,4 +113,10 @@ foo =~ bar
     RUBY
   end
 
+  def test_brackets
+    assert_equal_sexp [:call, [:call, nil, :foo], :[], [:call, nil, :bar]], sexp_result(<<-RUBY)
+foo[bar]
+    RUBY
+  end
+
 end

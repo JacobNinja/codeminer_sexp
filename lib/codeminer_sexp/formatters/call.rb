@@ -20,7 +20,11 @@ module CodeMiner
 
       def value
         value = super
-        value.to_sym if value
+        if value == '['
+          :[]
+        elsif value
+          value.to_sym
+        end
       end
 
       def to_sexp
