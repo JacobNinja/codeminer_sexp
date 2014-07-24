@@ -119,4 +119,10 @@ foo[bar]
     RUBY
   end
 
+  def test_iter_multi_masgn
+    assert_equal_sexp [:iter, [:call, nil, :foo], [:args, [:masgn, :a, [:masgn, :b, :c]]]], sexp_result(<<-RUBY)
+foo{|(a, (b, c))|}
+    RUBY
+  end
+
 end

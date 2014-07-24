@@ -4,7 +4,13 @@ module CodeMiner
     class DestructuredParams < SexpFormatter
 
       def each
-        exp.each.map(&:value).map(&:to_sym)
+        exp.each.map do |e|
+          if e.type == :mlhs
+            self.class.new(e, @parser).to_sexp
+          else
+            e.value.to_sym
+          end
+        end
       end
 
       def to_sexp
