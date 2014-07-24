@@ -1,7 +1,7 @@
 module CodeMiner
   module Formatters
 
-    class ArefAssign < CodeMiner::SexpFormatter
+    class ArefAssign < SexpFormatter
 
       def type
         :attrasgn
